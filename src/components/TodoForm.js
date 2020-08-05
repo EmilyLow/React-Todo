@@ -15,7 +15,7 @@ class TodoForm extends React.Component {
 
     //Not quite clear where props are pulling from here. I know I'm passing in addItem, but is the fact that the passed in thing called props just assumed?
     onSubmit = e => {
-        console.log("submitted");
+       
         e.preventDefault();
         this.props.addItem(this.state.todo);
         this.setState({todo: ""});
@@ -23,7 +23,6 @@ class TodoForm extends React.Component {
     render() {
         return (
             <div>
-                <p>To Do Form</p>
                 <form onSubmit = {this.onSubmit}>
                     <input 
                     type="text"
@@ -34,7 +33,7 @@ class TodoForm extends React.Component {
                     </input>
                     <button>Submit</button>
                 </form>
-                <button>Clear Completed</button>
+                <button onClick={this.props.clearComplete}>Clear Completed</button>
             </div>
         )
 

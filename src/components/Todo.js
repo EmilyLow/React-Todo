@@ -3,7 +3,7 @@ import React from 'react';
 
 function Todo(props) {
 
-    console.log(props.todo)
+   
     
     //className doesn't quite match example
     return (

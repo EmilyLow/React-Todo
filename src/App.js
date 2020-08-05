@@ -38,6 +38,18 @@ class App extends React.Component {
       })
     })
   };
+
+  clearComplete = () => {
+    
+   
+    let filtered = this.state.todoItems.filter(todo => {
+    
+      return !todo.completed;
+    });
+
+    this.setState({todoItems: filtered});
+  
+  }
   
 
   render() {
@@ -48,7 +60,7 @@ class App extends React.Component {
         </div>
         
         <TodoList todoItems = {this.state.todoItems} markComplete={this.markComplete}/>
-        <TodoForm addItem={this.addTodo}/>
+        <TodoForm addItem={this.addTodo} clearComplete={this.clearComplete}/>
       </div>
     );
   }
