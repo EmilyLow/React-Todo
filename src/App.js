@@ -27,7 +27,7 @@ class App extends React.Component {
 
   markComplete = (itemId) => {
     // When do you use () vs {} inside map?
-    //Also I don't understand the last bit of the return here quite
+    //Also I don't understand the last bit of the return here quite. How it setting the completed of the correct item? 
     this.setState({
       todoItems: this.state.todoItems.map(item => {
         if (itemId === item.id) {
