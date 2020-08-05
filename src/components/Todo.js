@@ -1,12 +1,17 @@
 
 import React from 'react';
 
-function Todo() {
+function Todo(props) {
 
-        
+    console.log(props.todo)
+    
+    //className doesn't quite match example
     return (
-        <div>
-            <p>ToDo</p>
+        <div 
+        onClick = {() => props.markComplete(props.todo.id)}
+        className={props.todo.completed ? "completed" : "" }
+        >
+            <p>{props.todo.task}</p>
         </div>
     )
 }

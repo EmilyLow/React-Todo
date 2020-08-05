@@ -1,6 +1,7 @@
 import React from 'react';
 import TodoList from './components/TodoList.js'
 import TodoForm from './components/TodoForm.js'
+import "./styles.css";
 
 class App extends React.Component {
   // you will need a place to store your state in this component.
@@ -9,24 +10,51 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      message: "Welcome to your Todo App!",
-      todoList: []
+      todoItems: tasks
     };
   }
 
-  //Update state function to pass, toDochange handler maybe
+  addTodo = todo => {
+    const newTodo = {
+      task: todo,
+      id: Date.now(),
+      completed: false
+    };
+    this.setState({
+      todoItems: [...this.state.todoItems, newTodo]
+    });
+  };
+
+  markComplete = (itemId) => {
+    // When do you use () vs {} inside map?
+    //Also I don't understand the last bit of the return here quite
+    this.setState({
+      todoItems: this.state.todoItems.map(item => {
+        if (itemId === item.id) {
+          return {...item, completed: !item.completed};
+        }
+        return item;
+
+      })
+    })
+  };
+  
+
   render() {
     return (
-      <div>
-        <h2>{this.state.message}</h2>
-        <TodoList/>
-        <TodoForm/>
+      <div className="App">
+        <div className = "header">
+        <h2>Todo List:</h2>
+        </div>
+        
+        <TodoList todoItems = {this.state.todoItems} markComplete={this.markComplete}/>
+        <TodoForm addItem={this.addTodo}/>
       </div>
     );
   }
 }
 
-const sampleData = [
+const tasks = [
   {
     task: 'Organize Garage',
     id: 1528817077286,

@@ -2,14 +2,16 @@
 import React from 'react';
 import Todo from './Todo.js';
 
-function TodoList() {
+function TodoList(props) {
 
         
     return (
-        <div>
-            <p>To Do List</p>
-            <Todo/>
-            <Todo/>
+        <div 
+        className="todo-list"
+        >        
+            {props.todoItems.map(item => (
+                <Todo key={item.id} todo={item} markComplete={props.markComplete}/>
+            ))}
         </div>
     )
 }
