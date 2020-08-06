@@ -2,6 +2,8 @@ import React from 'react';
 import TodoList from './components/TodoList.js'
 import TodoForm from './components/TodoForm.js'
 import "./styles.css";
+import styled from 'styled-components';
+
 
 class App extends React.Component {
   // you will need a place to store your state in this component.
@@ -54,14 +56,17 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="App">
+
+      <PageStyle className="App">
         <div className = "header">
-        <h2>Todo List:</h2>
+        <StyledHeader>Todo List</StyledHeader>
         </div>
+        <AppBox>
+            <TodoList todoItems = {this.state.todoItems} markComplete={this.markComplete}/>
+            <TodoForm addItem={this.addTodo} clearComplete={this.clearComplete}/>
+        </AppBox>
         
-        <TodoList todoItems = {this.state.todoItems} markComplete={this.markComplete}/>
-        <TodoForm addItem={this.addTodo} clearComplete={this.clearComplete}/>
-      </div>
+      </PageStyle>
     );
   }
 }
@@ -78,5 +83,32 @@ const tasks = [
     completed: false
   }
 ];
+
+const StyledHeader = styled.h2`
+  color: #11aad1;
+  font-size: 48px;
+
+`;
+
+const PageStyle = styled.div`
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+`;
+
+
+const AppBox = styled.div`
+  background-color: #5fd7f5;
+  color: white;
+  font-size: 24px;
+  width: 30%;
+  min-width: 500px;
+  padding: 30px;
+  border-radius: 30px;
+
+
+`;
 
 export default App;
