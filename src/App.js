@@ -14,6 +14,26 @@ class App extends React.Component {
     this.state = {
       todoItems: tasks
     };
+
+    //Start of stretch attempt
+    // this.state = {};
+    // if(!localStorage.getItem('todo')){
+      
+    //   this.populateStorage();
+    // }
+    // else {
+    //   this.setPage();
+    // }
+  }
+
+  populateStorage = () => {
+    //Add default items to storage
+    //And then set up page
+    this.setPage();
+  }
+
+  setPage = () => {
+    //Set initial state based off storage
   }
 
   addTodo = todo => {
